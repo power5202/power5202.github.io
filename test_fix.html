@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>测试标记删除修复</title>
+    <!-- Tailwind CSS v3 -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50 min-h-screen p-8">
+    <div class="max-w-4xl mx-auto bg-white rounded-lg shadow-lg p-8">
+        <h1 class="text-2xl font-bold text-gray-900 mb-6">测试标记删除修复</h1>
+        
+        <div class="space-y-6">
+            <div class="bg-blue-50 border-l-4 border-blue-500 p-4">
+                <h2 class="text-lg font-semibold text-blue-800 mb-2">修复说明</h2>
+                <p class="text-blue-700">
+                    此版本对户型图标记删除功能进行了彻底重构，采用了更激进的DOM操作和渲染策略来确保商品卡片状态能够正确同步更新。
+                </p>
+            </div>
+            
+            <div class="space-y-4">
+                <h3 class="text-lg font-semibold text-gray-800">测试步骤：</h3>
+                <ol class="list-decimal list-inside space-y-2 text-gray-700">
+                    <li>在户型图上添加一个商品标记</li>
+                    <li>确认商品卡片上显示了彩色的标记图标</li>
+                    <li>右键点击户型图上的标记并选择删除</li>
+                    <li>或者点击标记后在详情窗口中点击"移除标记"按钮</li>
+                    <li>观察商品卡片上的标记图标是否立即变为灰色</li>
+                </ol>
+            </div>
+            
+            <div class="bg-green-50 border-l-4 border-green-500 p-4">
+                <h3 class="text-lg font-semibold text-green-800 mb-2">关键改进：</h3>
+                <ul class="list-disc list-inside space-y-1 text-green-700">
+                    <li>使用splice()替代filter()来删除标记数据</li>
+                    <li>强制清除相关的DOM元素（户型图标记和商品卡片标记徽章）</li>
+                    <li>新增forceRenderItems()方法，采用更激进的渲染策略</li>
+                    <li>保存和恢复过滤排序状态，确保用户体验一致</li>
+                    <li>添加更详细的控制台日志，便于调试</li>
+                </ul>
+            </div>
+            
+            <div class="text-center">
+                <a href="index.html" class="btn btn-primary px-6 py-3 text-lg">
+                    <i class="fa fa-arrow-left mr-2"></i> 返回主应用
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
